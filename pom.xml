@@ -4,10 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-    <artifactId>modules</artifactId>
-    <groupId>org.motechproject</groupId>
-    <version>0.25-SNAPSHOT</version>
-  </parent>
+        <artifactId>modules</artifactId>
+        <groupId>org.motechproject</groupId>
+        <version>0.28-SNAPSHOT</version>
+        <relativePath>../</relativePath>
+    </parent>
     <groupId>org.motechproject</groupId>
     <artifactId>OpenXCDataInterface</artifactId>
     <version>0.1-SNAPSHOT</version>
@@ -19,7 +20,6 @@
     </properties>
 
     <dependencies>
-
         <dependency>
             <groupId>org.motechproject</groupId>
             <artifactId>motech-platform-osgi-extender-fragment</artifactId>
@@ -83,7 +83,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
-            <version>3.1.1.RELEASE</version>
+            <version>${spring.version}</version>
             <exclusions>
                 <exclusion>
                     <artifactId>spring-core</artifactId>
@@ -95,7 +95,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>3.1.1.RELEASE</version>
+            <version>${spring.version}</version>
             <exclusions>
                 <exclusion>
                     <artifactId>spring-core</artifactId>
@@ -132,7 +132,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
-            <version>3.1.0.RELEASE</version>
+            <version>${spring.version}</version>
             <exclusions>
                 <exclusion>
                     <artifactId>spring-core</artifactId>
@@ -162,6 +162,11 @@
             <artifactId>org.springframework.web.servlet</artifactId>
             <version>${spring.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.motechproject</groupId>
+            <artifactId>motech-platform-osgi-web-util</artifactId>
+            <version>${motech.version}</version>
+        </dependency>
         <!-- HTTP -->
         <!-- HTTP IT -->
         <dependency>
@@ -170,12 +175,7 @@
             <version>${motech.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.motechproject</groupId>
-            <artifactId>motech-platform-server-config</artifactId>
-            <version>${motech.version}</version>
-            <scope>test</scope>
-        </dependency>
+
         <!-- Repository -->
         <dependency>
             <groupId>org.motechproject</groupId>
@@ -185,7 +185,13 @@
         <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
-            <version>1.7</version>
+            <version>1.10</version>
+        </dependency>
+        <!-- Settings -->
+        <dependency>
+            <groupId>org.motechproject</groupId>
+            <artifactId>motech-platform-server-config</artifactId>
+            <version>${motech.version}</version>
         </dependency>
     </dependencies>
 

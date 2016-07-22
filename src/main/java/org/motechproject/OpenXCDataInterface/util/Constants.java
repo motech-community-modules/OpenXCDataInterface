@@ -7,12 +7,20 @@ package org.motechproject.OpenXCDataInterface.util;
  */
 
 public class Constants {
+    /*
+        Keys for getting database connection properties.
+     */
+    public static final String DATABASE_URL_KEY = "OpenXCDataInterface.dbUrl";
+    public static final String DATABASE_DRIVER_KEY = "OpenXCDataInterface.dbDriver";
+    public static final String DATABASE_USERNAME_KEY = "OpenXCDataInterface.dbUsername";
+    public static final String DATABASE_PASSWORD_KEY = "OpenXCDataInterface.dbPassword";
 
-    /*Constants for getting database connection */
-    public static final String dbUrl = "jdbc:mysql://localhost:3306/motech_data_services";
-    public static final String dbDriver = "com.mysql.jdbc.Driver";
-    public static final String dbUsername = "root";
-    public static final String dbPassword = "hcl123";
+//
+//    /*Constants for getting database connection */
+//    public static final String dbUrl = "jdbc:mysql://localhost:3306/motechdata";
+//    public static final String dbDriver = "com.mysql.jdbc.Driver";
+//    public static final String dbUsername = "root";
+//    public static final String dbPassword = "hcl123";
 
 
     /*All the queries used for fetching or inserting record in the database */
@@ -25,7 +33,7 @@ public class Constants {
 
     public static final String query_for_getVehicleId = "SELECT vehicleId FROM OPENXCDATAINTERFACE_VEHICLEREGISTRATIONRECORD WHERE vehRegnNo = '";
 
-    public static final String query_for_showRoute = "SELECT vehicleId,latitude,longitude,address FROM OPENXCDATAINTERFACE_VEHICLEUPLOADRECORD WHERE vehicleId = ";
+    public static final String query_for_showRoute = "SELECT vehicleId,latitude,longitude,address,timeStamp,vehSpeed FROM OPENXCDATAINTERFACE_VEHICLEUPLOADRECORD WHERE vehicleId = ";
 
     public static final String query2_for_registerVehicle = "SELECT max( id ) AS id, max( vehicleId ) AS vehicleId FROM OPENXCDATAINTERFACE_VEHICLEREGISTRATIONRECORD";
 
@@ -41,6 +49,8 @@ public class Constants {
 
     public static final String query5_for_uploadVehicleData =  "DELETE FROM OPENXCDATAINTERFACE_VEHICLEUPLOADRECORD WHERE vehicleId = ";
 
+
+    public static final int MAX_RECORD_FOR_A_VEHICLE = 120;
 
     /* All the String constants used all over the codes */
     public static final String STR_BLANK_STRING = "";

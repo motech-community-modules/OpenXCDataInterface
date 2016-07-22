@@ -1,20 +1,14 @@
 package org.motechproject.OpenXCDataInterface.repository.impl;
 
 
+import org.motechproject.OpenXCDataInterface.bean.ApplicationSettings;
 import org.motechproject.OpenXCDataInterface.domain.VehicleRegistrationRecord;
 import org.motechproject.OpenXCDataInterface.domain.VehicleUploadRecord;
 import org.motechproject.OpenXCDataInterface.repository.VehicleDetailsRecordDao;
-import org.motechproject.OpenXCDataInterface.util.Constants;
-import org.motechproject.OpenXCDataInterface.util.DatabaseConnection;
-import org.motechproject.OpenXCDataInterface.util.OpenXCDataInterfaceException;
-import org.motechproject.OpenXCDataInterface.util.DateTimeUtility;
-import org.motechproject.OpenXCDataInterface.util.GeoCodingUtility;
+import org.motechproject.OpenXCDataInterface.util.*;
 import org.springframework.jdbc.core.JdbcTemplate;
-import java.util.HashMap;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.Iterator;
+
+import java.util.*;
 
 /**
  * Class Name : VehicleDetailsRecordDaoImpl
@@ -22,9 +16,14 @@ import java.util.Iterator;
  */
 
 public class VehicleDetailsRecordDaoImpl implements VehicleDetailsRecordDao {
+    private ApplicationSettings applicationSettings;
 
-    JdbcTemplate jdbcTemplate = DatabaseConnection.getJdbcTemplate();
+    JdbcTemplate jdbcTemplate;
 
+    public VehicleDetailsRecordDaoImpl(ApplicationSettings applicationSettings) {
+        this.applicationSettings = applicationSettings;
+        jdbcTemplate = DatabaseConnection.getJdbcTemplate(applicationSettings);
+    }
 
     /*
 	 * Method Name : registerVehicle
@@ -252,11 +251,11 @@ public class VehicleDetailsRecordDaoImpl implements VehicleDetailsRecordDao {
                         vehicleId_count = new Integer(Constants.STR_ZERO);
                     }
 
-                    /* After Insertion , if the number of record for that Vehicle Id exceeds 10,, then deleting the older record */
-                    if (vehicleId_count.intValue() > 10) {
+                    /* After Insertion , if the number of record for that Vehicle Id exceeds 120, then deleting the older record */
+                    if (vehicleId_count.intValue() > Constants.MAX_RECORD_FOR_A_VEHICLE) {
 
                         query5 = Constants.query5_for_uploadVehicleData + vehicleUploadRecord.getVehicleId();
-                        query5 = query5 + " ORDER BY id LIMIT " + (vehicleId_count.intValue() - 10);
+                        query5 = query5 + " ORDER BY id LIMIT " + (vehicleId_count.intValue() - Constants.MAX_RECORD_FOR_A_VEHICLE);
                         count2 = jdbcTemplate.update(query5);
 
                     }
@@ -506,7 +505,7 @@ public class VehicleDetailsRecordDaoImpl implements VehicleDetailsRecordDao {
 
             vehicleUploadRecordList = new ArrayList<VehicleUploadRecord>();
             query = Constants.query_for_showRoute + vehicleId;
-            query = query + " ORDER BY id DESC";
+            query = query + " ORDER BY timeStamp desc";
 
             List<Map<String, Object>> queryList = jdbcTemplate.queryForList(query);
 
@@ -538,6 +537,16 @@ public class VehicleDetailsRecordDaoImpl implements VehicleDetailsRecordDao {
                         if (key.equalsIgnoreCase("address")) {
                             if (value != null) {
                                 vehicleUploadRecord.setAddress(value.toString());
+                            }
+                        }
+                        if (key.equalsIgnoreCase("timeStamp")) {
+                            if (value != null) {
+                                vehicleUploadRecord.setTimeStamp(value.toString());
+                            }
+                        }
+                        if (key.equalsIgnoreCase("vehSpeed")) {
+                            if (value != null) {
+                                vehicleUploadRecord.setVehSpeed(value.toString());
                             }
                         }
 

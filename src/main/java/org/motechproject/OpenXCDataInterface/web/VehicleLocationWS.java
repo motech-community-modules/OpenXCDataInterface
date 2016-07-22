@@ -5,19 +5,22 @@ import org.motechproject.OpenXCDataInterface.domain.VehicleUploadRecord;
 import org.motechproject.OpenXCDataInterface.service.VehicleDetailsRecordService;
 import org.motechproject.OpenXCDataInterface.util.Constants;
 import org.motechproject.OpenXCDataInterface.util.OpenXCDataInterfaceException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.Map;
 
 
@@ -28,6 +31,7 @@ import java.util.Map;
 
 @Controller
 public class VehicleLocationWS {
+    private static final Logger LOGGER = LoggerFactory.getLogger(VehicleLocationWS.class);
 
     @Autowired
     private VehicleDetailsRecordService vehicleDetailsRecordService;

@@ -3,9 +3,13 @@ package org.motechproject.OpenXCDataInterface.service.impl;
 import org.motechproject.OpenXCDataInterface.domain.VehicleRegistrationRecord;
 import org.motechproject.OpenXCDataInterface.domain.VehicleUploadRecord;
 import org.motechproject.OpenXCDataInterface.repository.impl.VehicleDetailsRecordDaoImpl;
+import org.motechproject.OpenXCDataInterface.service.ApplicationSettingsService;
 import org.motechproject.OpenXCDataInterface.service.VehicleDetailsRecordService;
 import org.motechproject.OpenXCDataInterface.repository.VehicleDetailsRecordDao;
 import org.motechproject.OpenXCDataInterface.util.OpenXCDataInterfaceException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,7 +22,14 @@ import java.util.List;
 
 @Service("vehicleDetailsRecordService")
 public class VehicleDetailsRecordServiceImpl implements VehicleDetailsRecordService {
+    private static final Logger LOGGER = LoggerFactory.getLogger(VehicleDetailsRecordServiceImpl.class);
+    ApplicationSettingsService applicationSettingsService;
 
+    @Autowired
+    public void setApplicationSettingsService(ApplicationSettingsService applicationSettingsService) {
+        LOGGER.info("Initializing  ApplicationSettingsService for VehicleDetailsRecordService");
+        this.applicationSettingsService = applicationSettingsService;
+    }
     /*
 	 * Method Name : getAllVehicleCurrentLocation
 	 * Purpose     : Service Layer Method to fetch the current location of all the Registered Vehicles from DAO Layer
@@ -29,7 +40,7 @@ public class VehicleDetailsRecordServiceImpl implements VehicleDetailsRecordServ
     public List<VehicleUploadRecord> getAllVehicleCurrentLocation() throws OpenXCDataInterfaceException{
 
         List<VehicleUploadRecord> vehicleUploadRecordList = null;
-        VehicleDetailsRecordDao vehicleDetailsRecordDao = new VehicleDetailsRecordDaoImpl();
+        VehicleDetailsRecordDao vehicleDetailsRecordDao = new VehicleDetailsRecordDaoImpl(applicationSettingsService.getApplicationSettings());
         vehicleUploadRecordList = vehicleDetailsRecordDao.getAllVehicleCurrentLocation();
 
         return vehicleUploadRecordList;
@@ -47,7 +58,7 @@ public class VehicleDetailsRecordServiceImpl implements VehicleDetailsRecordServ
     public List<VehicleRegistrationRecord> getRegisteredVehicleList() throws OpenXCDataInterfaceException{
 
         List<VehicleRegistrationRecord> vehicleRegistrationRecordList = null;
-        VehicleDetailsRecordDao vehicleDetailsRecordDao = new VehicleDetailsRecordDaoImpl();
+        VehicleDetailsRecordDao vehicleDetailsRecordDao = new VehicleDetailsRecordDaoImpl(applicationSettingsService.getApplicationSettings());
         vehicleRegistrationRecordList = vehicleDetailsRecordDao.getRegisteredVehicleList();
 
         return vehicleRegistrationRecordList;
@@ -65,7 +76,7 @@ public class VehicleDetailsRecordServiceImpl implements VehicleDetailsRecordServ
     public VehicleUploadRecord getVehicleCurrentLocation(String vehicleId) throws OpenXCDataInterfaceException{
 
         VehicleUploadRecord vehicleUploadRecord = null;
-        VehicleDetailsRecordDao vehicleDetailsRecordDao = new VehicleDetailsRecordDaoImpl();
+        VehicleDetailsRecordDao vehicleDetailsRecordDao = new VehicleDetailsRecordDaoImpl(applicationSettingsService.getApplicationSettings());
         vehicleUploadRecord = vehicleDetailsRecordDao.getVehicleCurrentLocation(vehicleId);
 
         return vehicleUploadRecord;
@@ -83,7 +94,7 @@ public class VehicleDetailsRecordServiceImpl implements VehicleDetailsRecordServ
     public List<VehicleUploadRecord> showRoute(String vehicleId) throws OpenXCDataInterfaceException{
 
         List<VehicleUploadRecord> vehicleUploadRecordList = null;
-        VehicleDetailsRecordDao vehicleDetailsRecordDao = new VehicleDetailsRecordDaoImpl();
+        VehicleDetailsRecordDao vehicleDetailsRecordDao = new VehicleDetailsRecordDaoImpl(applicationSettingsService.getApplicationSettings());
         vehicleUploadRecordList = vehicleDetailsRecordDao.showRoute(vehicleId);
 
         return vehicleUploadRecordList;
@@ -101,7 +112,7 @@ public class VehicleDetailsRecordServiceImpl implements VehicleDetailsRecordServ
     public Integer getVehicleId(String vehRegnNo) throws OpenXCDataInterfaceException{
 
         Integer vehicleId = null;
-        VehicleDetailsRecordDao vehicleDetailsRecordDao = new VehicleDetailsRecordDaoImpl();
+        VehicleDetailsRecordDao vehicleDetailsRecordDao = new VehicleDetailsRecordDaoImpl(applicationSettingsService.getApplicationSettings());
         vehicleId = vehicleDetailsRecordDao.getVehicleId(vehRegnNo);
 
         return vehicleId;
@@ -119,7 +130,7 @@ public class VehicleDetailsRecordServiceImpl implements VehicleDetailsRecordServ
     public String registerVehicle(VehicleRegistrationRecord vehicleRegistrationRecord) throws OpenXCDataInterfaceException{
 
         String chkReturnResult = null;
-        VehicleDetailsRecordDao vehicleDetailsRecordDao = new VehicleDetailsRecordDaoImpl();
+        VehicleDetailsRecordDao vehicleDetailsRecordDao = new VehicleDetailsRecordDaoImpl(applicationSettingsService.getApplicationSettings());
         chkReturnResult = vehicleDetailsRecordDao.registerVehicle(vehicleRegistrationRecord);
 
         return chkReturnResult;
@@ -137,7 +148,7 @@ public class VehicleDetailsRecordServiceImpl implements VehicleDetailsRecordServ
     public String uploadVehicleData(VehicleUploadRecord vehicleUploadRecord) throws OpenXCDataInterfaceException{
 
         String chkReturnResult = null;
-        VehicleDetailsRecordDao vehicleDetailsRecordDao = new VehicleDetailsRecordDaoImpl();
+        VehicleDetailsRecordDao vehicleDetailsRecordDao = new VehicleDetailsRecordDaoImpl(applicationSettingsService.getApplicationSettings());
         chkReturnResult = vehicleDetailsRecordDao.uploadVehicleData(vehicleUploadRecord);
 
 
