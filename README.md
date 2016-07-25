@@ -7,4 +7,9 @@ Purpose: First to use this custom module, the vehicle data (like speed, current 
 
 For More Detail, please refere to following document : [Develeoper Reference][]
 
+## License
+
+Copyright (c) 2016 Ford Motor Company
+Licensed under the BSD license.
+
 [Develeoper Reference]:docs/MOTECH_OpenXCDataInterface_Developer%20Reference.docx
