@@ -26,8 +26,16 @@
                 <entry key="messages" value="../OpenXCDataInterface/resources/messages/" />
             </map>
         </constructor-arg>
-        <property name="defaultURL" value="/OpenXCDataInterface"/>
+        <property name="settingsURL" value="/OpenXCDataInterface/settings"/>
+        <property name="defaultURL" value="/OpenXCDataInterface/settings"/>
     </bean>
-
+    <bean id="openXCDataInterfaceSettingFacade" class="org.motechproject.server.config.SettingsFacade"
+          autowire="byType">
+        <property name="configFiles">
+            <list>
+                <value>classpath:OpenXCDataInterface-settings.properties</value>
+            </list>
+        </property>
+    </bean>
 
 </beans>

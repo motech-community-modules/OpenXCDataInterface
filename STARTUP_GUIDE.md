@@ -33,10 +33,10 @@ Purpose of this document is to provide the step wise approach to setup MOTECH Pl
     
     For Installable Binary APK and Source code please refer to [mHealthApp][]. 
 
-[Motech_Platform_Server_Setup_Guide.docx]:https://github.com/hclvipin/mHealthDataInterface/blob/master/docs/Motech_Platform_Server_Setup_Guide.docx
-[mHealthDataInterface]:https://github.com/hclvipin/mHealthDataInterface
-[OpenXCDataInterface]:https://github.com/hclvipin/OpenXCDataInterface
-[mHealthApp]:https://github.com/hclvipin/mHealth-App
-[mHealthDataInterface Developer Reference Document]:https://github.com/hclvipin/mHealthDataInterface/blob/master/docs/MOTECH_mHealthDataInterface_Developer_Reference_v2.docx
-[OpenXCDataInterface Developer Reference Document]:https://github.com/hclvipin/OpenXCDataInterface/blob/master/docs/MOTECH_OpenXCDataInterface_Developer%20Reference.docx
-[Feature Set]:docs/Ford_mHealth_Feature_Set.docx
+[Motech_Platform_Server_Setup_Guide.docx]:../../../mHealthDataInterface/blob/master/docs/Motech_Platform_Server_Setup_Guide.docx
+[mHealthDataInterface]:../../../mHealthDataInterface
+[OpenXCDataInterface]:../../../OpenXCDataInterface
+[mHealthApp]:../../../mHealth-App
+[mHealthDataInterface Developer Reference Document]:../../../mHealthDataInterface/blob/master/docs/MOTECH_mHealthDataInterface_Developer_Reference_v2.docx
+[OpenXCDataInterface Developer Reference Document]:../../../OpenXCDataInterface/blob/master/docs/MOTECH_OpenXCDataInterface_Developer%20Reference.docx
+[Feature Set]:../../../mHealth-App/blob/master/docs/mHealth_Feature_Set.docx

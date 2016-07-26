@@ -1,0 +1,57 @@
+<div class="row">
+    <div class="inside">
+        <div class="row">
+            <div class="panel-group">
+                <div class="panel panel-default dhis2-config">
+                    <div class="panel-heading">
+                        {{msg('server.home')}}
+                        {{msg('OpenXCDataInterface.web.settings.configPanelTitle')}}
+                    </div>
+                    <div class="panel-body">
+                        <form name="form" class="form-horizontal inside" novalidate>
+
+                            <div class="form-group">
+                                <label for="OpenXCDataInterface.dbUrl" class="col-md-3 control-label">{{msg('OpenXCDataInterface.dbUrl')}}</label>
+                                <div class="col-md-8">
+                                    <input id="OpenXCDataInterface.dbUrl" type="text" ng-change="draftChanged()" class="form-control" ng-model="applicationSettings.dbUrl">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="OpenXCDataInterface.dbDriver" class="col-md-3 control-label">{{msg('OpenXCDataInterface.dbDriver')}}</label>
+                                <div class="col-md-8">
+                                    <input id="OpenXCDataInterface.dbDriver" type="text" ng-change="draftChanged()" class="form-control" ng-model="applicationSettings.dbDriver">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="OpenXCDataInterface.dbUsername" class="col-md-3 control-label">{{msg('OpenXCDataInterface.dbUsername')}}</label>
+                                <div class="col-md-8">
+                                    <input id="OpenXCDataInterface.dbUsername" type="text" ng-change="draftChanged()" class="form-control" ng-model="applicationSettings.dbUsername">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="OpenXCDataInterface.dbPassword" class="col-md-3 control-label">{{msg('OpenXCDataInterface.dbPassword')}}</label>
+                                <div class="col-md-8">
+                                    <input id="OpenXCDataInterface.dbPassword" type="password" ng-change="draftChanged()" class="form-control" ng-model="applicationSettings.dbPassword">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <input type="hidden" name="section" value="OpenXCDataInterface.properties">
+                                <input type="button" class="btn btn-default" ng-click="saveSettings(applicationSettings)" value="Save">
+                                <input type="button" class="btn btn-default" ng-click="testSettings(applicationSettings)" value="Test Database Connection">
+                            </div>
+                            <div ng-show="saveSuccess" class="alert alert-success">{{msg('OpenXCDataInterface.applicationSetting.save.success.message')}}</div>
+                            <div ng-show="saveError" class="alert alert-danger">{{msg('OpenXCDataInterface.applicationSetting.save.error.message')}}</div>
+                            <div ng-show="retrievalError" class="alert alert-danger">{{msg('OpenXCDataInterface.applicationSetting.retrieval.error.message')}}</div>
+                            <div ng-show="testSuccess" class="alert alert-success">{{msg('OpenXCDataInterface.applicationSetting.test.success.message')}}</div>
+                            <div ng-show="testError" class="alert alert-danger">{{msg('OpenXCDataInterface.applicationSetting.test.error.message')}}</div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,12 +1,13 @@
+
 (function () {
     'use strict';
 
     /* App Module */
 
-    angular.module('helloWorld', ['motech-dashboard', 'helloWorld.controllers', 'helloWorld.directives', 'helloWorld.services', 'ngCookies'])
+    angular.module('OpenXCDataInterface', ['motech-dashboard', 'OpenXCDataInterface.controllers', 'OpenXCDataInterface.directives', 'OpenXCDataInterface.services', 'ngCookies'])
         .config(['$routeProvider',
         function ($routeProvider) {
             $routeProvider.
-                when('/helloWorld/', {templateUrl: '../OpenXCDataInterface/resources/partials/say-hello.html', controller: 'HelloWorldController'});
+                when('/OpenXCDataInterface/settings', {templateUrl: '../OpenXCDataInterface/resources/partials/settings.html', controller: 'OpenXCDataInterfaceCtrl'});
     }]);
 }());

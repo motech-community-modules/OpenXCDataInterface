@@ -8,6 +8,7 @@
     <osgi:service ref="vehicleDetailsRecordService"
                   interface="org.motechproject.OpenXCDataInterface.service.VehicleDetailsRecordService" />
 
-
+    <osgi:service id="applicationSettingsServiceOsgi" ref="applicationSettingsService"
+                  interface="org.motechproject.OpenXCDataInterface.service.ApplicationSettingsService" />
 
 </beans>
